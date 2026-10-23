@@ -6,13 +6,19 @@ Extensão do Chrome que transcreve reuniões do **Google Meet** e do **Microsoft
 
 ## Telas
 
+**Painel lateral**: transcrição ao vivo, com as falas agrupadas por pessoa.
+
 <p align="center">
-  <img src="docs/painel.png" alt="Painel lateral com a transcrição ao vivo, falas agrupadas por pessoa" width="320">
-  &nbsp;&nbsp;
-  <img src="docs/opcoes.png" alt="Página de opções: origem do texto, organização com IA, chave da OpenAI" width="420">
+  <img src="docs/painel.png" alt="Painel lateral com a transcrição ao vivo, falas agrupadas por pessoa" width="360">
 </p>
 
-<sub>Painel lateral (esquerda) e página de opções (direita). Os nomes e falas das imagens são fictícios, apenas ilustrativos.</sub>
+**Opções**: origem do texto, organização com IA e chave da OpenAI.
+
+<p align="center">
+  <img src="docs/opcoes.png" alt="Página de opções: origem do texto, organização com IA, chave da OpenAI" width="560">
+</p>
+
+<sub>Os nomes e falas das imagens são fictícios, apenas ilustrativos.</sub>
 
 ## Como funciona
 
