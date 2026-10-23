@@ -74,4 +74,4 @@ Para reportar uma vulnerabilidade, abra uma *security advisory* privada no GitHu
 
 ## Licença
 
-MIT. Veja `LICENSE`.
+`LICENSE` MIT. 
