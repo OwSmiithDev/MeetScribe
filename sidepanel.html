@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MeetScribe</title>
+<link rel="stylesheet" href="ui.css">
+</head>
+<body>
+<div class="shell" id="shell">
+  <header class="top">
+    <div class="brand"><span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>MeetScribe</div>
+    <button id="openOptions" class="icon-btn" type="button" aria-label="Abrir opções" title="Opções">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+    </button>
+  </header>
+
+  <section class="control" aria-label="Controle da transcrição">
+    <div class="status-row" role="status" aria-live="polite">
+      <span class="dot" aria-hidden="true"></span>
+      <span id="status">Pronto</span>
+      <span id="elapsed" class="mono"></span>
+    </div>
+    <div class="meters" aria-hidden="true">
+      <label>Reunião<span class="bar"><b id="lvTab"></b></span></label>
+      <label>Você<span class="bar"><b id="lvMic"></b></span></label>
+    </div>
+    <button id="toggle" class="primary" type="button">Iniciar transcrição</button>
+    <p id="notice" class="notice" role="alert" hidden></p>
+  </section>
+
+  <section class="tools" aria-label="Sessões e exportação">
+    <select id="sessions" aria-label="Sessão"></select>
+    <div class="tools-row">
+      <div class="seg" role="group" aria-label="Versão do texto">
+        <button id="segClean" type="button" aria-pressed="true">Organizado</button>
+        <button id="segRaw" type="button" aria-pressed="false">Original</button>
+      </div>
+      <button id="copy" type="button">Copiar</button>
+      <details class="menu" id="dlMenu">
+        <summary><span class="icon-btn boxed" role="button" aria-label="Baixar" title="Baixar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg></span></summary>
+        <div class="pop">
+          <button id="dlTxt" type="button">Texto (.txt)</button>
+          <button id="dlMd" type="button">Markdown (.md)</button>
+        </div>
+      </details>
+      <button id="del" class="icon-btn boxed danger" type="button" aria-label="Apagar sessão" title="Apagar sessão">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <div class="stage">
+    <main id="log" class="log" tabindex="0" role="log" aria-live="off" aria-label="Transcrição"></main>
+    <button id="jump" class="jump" type="button" hidden>Ir para o fim ↓</button>
+  </div>
+</div>
+<script src="sidepanel.js"></script>
+</body>
+</html>

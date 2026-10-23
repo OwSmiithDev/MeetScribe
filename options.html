@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MeetScribe · Opções</title>
+<link rel="stylesheet" href="ui.css">
+</head>
+<body class="opts">
+<div class="page">
+  <header class="page-head">
+    <h1><span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Opções</h1>
+    <span id="saveMsg" class="msg" role="status"></span>
+    <button id="save" class="primary" type="button">Salvar</button>
+  </header>
+
+  <fieldset>
+    <legend>Texto da reunião</legend>
+    <label class="field"><span>Origem</span>
+      <select id="source">
+        <option value="captions">Legendas da própria reunião (Meet/Teams) — recomendado</option>
+        <option value="audio">Áudio da aba + transcrição da OpenAI</option>
+      </select>
+      <small>Legendas: texto e nome de quem fala vêm prontos da reunião, sem gravar áudio. Deixe as legendas (CC) no idioma falado.</small></label>
+    <label class="check"><input id="autoCC" type="checkbox"><span><b>Ligar as legendas automaticamente</b><br><small>Clica no botão CC da reunião ao iniciar.</small></span></label>
+    <label class="check"><input id="refine" type="checkbox"><span><b>Organizar com IA</b><br><small>Um modelo de texto da OpenAI corrige pontuação, maiúsculas e erros evidentes, sem resumir nem inventar. Se a correção mudar demais o texto, fica o original.</small></span></label>
+    <label class="field"><span>Modelo para organizar</span>
+      <input id="refineModel" type="text" list="rm" spellcheck="false"><datalist id="rm"><option value="gpt-4.1-mini"></option><option value="gpt-4.1"></option><option value="gpt-4o-mini"></option><option value="gpt-4o"></option></datalist></label>
+    <label class="field"><span>Vocabulário (nomes, siglas)</span>
+      <textarea id="vocabulary" placeholder="Nomes de pessoas, empresas, siglas e termos técnicos…"></textarea>
+      <small>Ajuda a IA a acertar nomes próprios ao organizar o texto.</small></label>
+    <label class="field"><span>Meu nome na transcrição</span>
+      <input id="selfName" type="text" placeholder="Se vazio, usa o nome detectado na reunião"></label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Chave da OpenAI</legend>
+    <label class="field"><span>Chave da API</span>
+      <div class="keyrow">
+        <input id="apiKey" type="password" autocomplete="off" spellcheck="false" placeholder="sk-…">
+        <button id="showKey" type="button" aria-pressed="false">Mostrar</button>
+      </div></label>
+    <div class="actions"><button id="test" type="button">Testar chave</button><span id="testMsg" class="msg" role="status"></span></div>
+    <p class="privacy">A chave fica só neste navegador (<code>chrome.storage.local</code>), fora do alcance das páginas das reuniões, e só é enviada para <code>api.openai.com</code>.</p>
+  </fieldset>
+
+  <details class="card" id="audioCard">
+    <summary>Modo áudio (avançado)</summary>
+    <label class="field"><span>Modelo de transcrição</span>
+      <select id="model">
+        <option value="gpt-4o-transcribe">gpt-4o-transcribe (mais preciso)</option>
+        <option value="gpt-4o-mini-transcribe">gpt-4o-mini-transcribe (mais rápido e barato)</option>
+        <option value="whisper-1">whisper-1</option>
+      </select></label>
+    <label class="check"><input id="diarize" type="checkbox"><span><b>Reforçar com diarização OpenAI</b><br><small>Separa vozes quando duas pessoas falam juntas. Mais lento.</small></span></label>
+    <label class="field"><span>Idioma</span>
+      <select id="language"><option value="pt">Português</option><option value="en">English</option><option value="es">Español</option><option value="auto">Automático</option></select></label>
+    <label class="field"><span>Pausa para fechar uma fala (ms)</span>
+      <input id="silenceMs" type="number" min="300" max="3000" step="100">
+      <small>Menor = texto mais rápido; maior = frases mais completas.</small></label>
+    <label class="check"><input id="useMic" type="checkbox"><span><b>Transcrever meu microfone</b><br><small>Use fones de ouvido para não gravar a reunião duas vezes.</small></span></label>
+    <div class="actions"><button id="mic" type="button">Permitir microfone</button><span id="micMsg" class="msg" role="status"></span></div>
+  </details>
+
+  <fieldset>
+    <legend>Dados</legend>
+    <div class="actions"><button id="wipe" class="danger" type="button">Apagar todas as transcrições</button><span id="wipeMsg" class="msg" role="status"></span></div>
+  </fieldset>
+
+  <section class="privacy" aria-label="Privacidade">
+    <b>O que sai do seu computador</b>
+    <ul>
+      <li>Modo legendas com “Organizar com IA”: o texto das legendas vai para a OpenAI (<code>api.openai.com</code>).</li>
+      <li>Modo áudio: trechos de áudio da aba e do microfone vão para a OpenAI.</li>
+      <li>Nada é enviado a outros servidores. As transcrições ficam salvas só neste navegador, até você apagar.</li>
+    </ul>
+  </section>
+</div>
+<script src="options.js"></script>
+</body>
+</html>

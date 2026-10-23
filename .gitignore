@@ -1,0 +1,12 @@
+# local tooling and secrets: never commit
+.local/
+.taskview/
+.env
+.env.*
+*.pem
+*.key
+*.crx
+*.zip
+node_modules/
+.DS_Store
+Thumbs.db
